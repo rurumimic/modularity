@@ -1,0 +1,13 @@
+# Exploded Module
+!out
+!HelloWorld.class
+!module-info.class
+
+# JAR
+!helloworld.jar
+
+# Runtime Images
+helloworld-image/conf
+helloworld-image/include
+helloworld-image/legal
+helloworld-image/lib
