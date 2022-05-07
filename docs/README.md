@@ -18,3 +18,4 @@
   - resolution
   - unnamed module
 - [Create a module](../examples/helloworld/README.md)
+- [Multi modules](../examples/easytext/README.md)
