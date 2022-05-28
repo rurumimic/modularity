@@ -54,10 +54,10 @@ jar -cfe mods/helloworld.jar com.javamodularity.helloworld.HelloWorld \
 ```
 
 - `-cf`: 아카이브 `helloworld.jar` 생성
-   - `c`: Creates a new archive file named jarfile (if f is specified) or to standard output (if f and jarfile are omitted).
-   - `f`: Specifies the file jarfile to be created (c), updated (u), extracted (x), indexed (i), or viewed (t). 
-- `-e`: 진입점 `HelloWorld` 클래스 지정. 
-- `-C`: `out/helloworld` 디렉터리 아래 컴파일된 모든 파일을 JAR 파일에 넣는다. 
+  - `c`: Creates a new archive file named jarfile (if f is specified) or to standard output (if f and jarfile are omitted).
+  - `f`: Specifies the file jarfile to be created (c), updated (u), extracted (x), indexed (i), or viewed (t).
+- `-e`: 진입점 `HelloWorld` 클래스 지정.
+- `-C`: `out/helloworld` 디렉터리 아래 컴파일된 모든 파일을 JAR 파일에 넣는다.
 
 ### JAR
 
@@ -137,7 +137,7 @@ java --show-module-resolution \
 ```
 
 ```bash
-root helloworld file:///.../examples/helloworld/mods/helloworld.jar
+root helloworld file:///.../src/helloworld/mods/helloworld.jar
 Hello, World!
 ```
 

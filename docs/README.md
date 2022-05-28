@@ -17,8 +17,8 @@
   - qualified exports
   - resolution
   - unnamed module
-- [Create a module](../examples/helloworld/README.md)
-- [Multi modules](../examples/easytext/README.md)
+- [Create a module](../src/helloworld/README.md)
+- [Multi modules](../src/easytext/README.md)
   - does not exist class
   - cyclic dependence
   - IllegalAccessException - qualified exports
