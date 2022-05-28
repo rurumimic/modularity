@@ -19,6 +19,8 @@
 ### 모듈 한개
 
 ```bash
+java -p out -m easytext/foo.easytext.Main lorem.ipsum.txt
+# or
 java -p mods -m easytext lorem.ipsum.txt
 
 Reading lorem.ipsum.txt
@@ -26,6 +28,46 @@ Flesch-Kincaid: 48.16192413091662
 ```
 
 ### 모듈 두개
+
+```bash
+javac -d out/easytext.two --module-source-path src -m easytext.cli
+jar -cfe mods/easytext.cli.jar foo.easytext.cli.Main -C out/easytext.two/easytext.cli .
+jar -cf mods/easytext.analysis.jar -C out/easytext.two/easytext.analysis .
+```
+
+```bash
+java -p out/easytext.two -m easytext.cli/foo.easytext.cli.Main lorem.ipsum.txt
+# or
+java -p mods -m easytext.cli lorem.ipsum.txt
+```
+
+```bash
+unzip -p mods/easytext.two.jar META-INF/MANIFEST.MF
+
+Manifest-Version: 1.0
+Created-By: 9.0.4 (Oracle Corporation)
+Main-Class: foo.easytext.cli.Main
+```
+
+```bash
+jar -tf mods/easytext.two.jar | tree --fromfile .
+
+.
+├── META-INF
+│   └── MANIFEST.MF
+├── easytext.analysis
+│   ├── foo
+│   │   └── easytext
+│   │       └── analysis
+│   │           └── FleschKincaid.class
+│   └── module-info.class
+└── easytext.cli
+    ├── foo
+    │   └── easytext
+    │       └── cli
+    │           └── Main.class
+    └── module-info.class
+```
 
 #### 탐색 에러
 
@@ -62,6 +104,25 @@ error: cannot access module-info
 ```
 
 ### 모듈 세개
+
+```bash
+javac -d out/easytext.three --module-source-path src -m easytext.gui,easytext.cli
+jar -cfe mods/easytext.cli.jar foo.easytext.cli.Main -C out/easytext.three/easytext.cli .
+jar -cf mods/easytext.analysis.jar -C out/easytext.three/easytext.analysis .
+jar -cfe mods/easytext.gui.jar foo.easytext.gui.Main -C out/easytext.three/easytext.gui .
+```
+
+```bash
+# gui
+java -p out/easytext.three -m easytext.gui/foo.easytext.gui.Main lorem.ipsum.txt
+# or
+java -p mods -m easytext.gui lorem.ipsum.txt
+
+# cli
+java -p out/easytext.three -m easytext.cli/foo.easytext.cli.Main lorem.ipsum.txt
+# or
+java -p mods -m easytext.cli lorem.ipsum.txt
+```
 
 #### 의존성 탐색
 
@@ -122,3 +183,45 @@ module easytext.gui {
 #### 실행
 
 ![](gui.png)
+
+#### 설명
+
+```bash
+jar -d -f mods/easytext.jar
+jar --describe-module --file mods/easytext.jar
+
+easytext jar:file:///…/src/easytext/mods/easytext.jar/!module-info.class
+requires java.base mandated
+contains foo.easytext
+main-class foo.easytext.Main
+```
+
+```bash
+jar --describe-module --file mods/easytext.cli.jar
+
+easytext.cli jar:file:///…/src/easytext/mods/easytext.cli.jar/!module-info.class
+requires easytext.analysis
+requires java.base mandated
+contains foo.easytext.cli
+main-class foo.easytext.cli.Main
+```
+
+```bash
+jar --describe-module --file mods/easytext.gui.jar
+
+easytext.gui jar:file:///…/src/easytext/mods/easytext.gui.jar/!module-info.class
+requires easytext.analysis
+requires java.base mandated
+requires javafx.controls
+requires javafx.graphics
+qualified exports foo.easytext.gui to javafx.graphics
+main-class foo.easytext.gui.Main
+```
+
+```bash
+jar --describe-module --file mods/easytext.analysis.jar
+
+easytext.analysis jar:file:///…/src/easytext/mods/easytext.analysis.jar/!module-info.class
+exports foo.easytext.analysis
+requires java.base mandated
+```

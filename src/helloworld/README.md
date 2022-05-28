@@ -13,24 +13,32 @@ helloworld
 
 ## Compile
 
-~ Java 8:
+### ~ Java 8
 
 ```bash
-javac -d out src/com/foo/Class1.java src/com/foo/Class2.java
+javac -d out/helloworld \
+      src/helloworld/com/javamodularity/helloworld/HelloWorld.java
 ```
 
-Java 9+:
+### Java 9+
 
 1. 클래스 파일을 생성할 디렉터리 이름은 모듈 이름과 동일하게 설정한다.
 2. 컴파일할 소스 파일에 `module-info.java`를 추가한다.
 
 ```bash
-javac -d out/helloworld \
-         src/helloworld/com/javamodularity/helloworld/HelloWorld.java \
-         src/helloworld/module-info.java
+javac --help
+
+Usage: javac <options> <source files>
+-d <directory>    Specify where to place generated class files
 ```
 
-### Exploded Module 분해 모듈
+```bash
+javac -d out/helloworld \
+      src/helloworld/com/javamodularity/helloworld/HelloWorld.java \
+      src/helloworld/module-info.java
+```
+
+### Exploded Module, 분해 모듈
 
 ```bash
 helloworld
@@ -49,14 +57,26 @@ helloworld
 JAR 이름은 원하는 대로 지정 가능.
 
 ```bash
-jar -cfe mods/helloworld.jar com.javamodularity.helloworld.HelloWorld \
+jar --help
+
+사용법: jar [OPTION...] [ [--release VERSION] [-C dir] 파일] ...
+jar --create --file classes.jar Foo.class Bar.class
+jar --create --file classes.jar --manifest mymanifest -C foo/ .
+jar --create --file foo.jar --main-class com.foo.Main --module-version 1.0 -C foo/ classes resources
+```
+
+```bash
+mkdir -p mods
+
+jar -c -f mods/helloworld.jar \
+    -e com.javamodularity.helloworld.HelloWorld \
     -C out/helloworld .
 ```
 
 - `-cf`: 아카이브 `helloworld.jar` 생성
-  - `c`: Creates a new archive file named jarfile (if f is specified) or to standard output (if f and jarfile are omitted).
-  - `f`: Specifies the file jarfile to be created (c), updated (u), extracted (x), indexed (i), or viewed (t).
-- `-e`: 진입점 `HelloWorld` 클래스 지정.
+  - `-c`, `--create`: Creates a new archive file named jarfile (if f is specified) or to standard output (if f and jarfile are omitted).
+  - `-f`, `--file=FILE`: Specifies the file jarfile to be created (c), updated (u), extracted (x), indexed (i), or viewed (t).
+- `-e`, `--main-class=CLASSNAME`: 진입점 `HelloWorld` 클래스 지정.
 - `-C`: `out/helloworld` 디렉터리 아래 컴파일된 모든 파일을 JAR 파일에 넣는다.
 
 ### JAR
@@ -83,7 +103,7 @@ helloworld.jar
 │   └── javamodularity
 │       └── helloworld
 │           └── HelloWorld.class
-└── module-info.class
+└── module-info.class # Java 9+
 ```
 
 ### MANIFEST.MF
@@ -100,7 +120,13 @@ Main-Class: com.javamodularity.helloworld.HelloWorld
 
 ## Run a module
 
-### Run a Exploded Module
+### Run a class
+
+```bash
+java -cp out/helloworld com.javamodularity.helloworld.HelloWorld
+```
+
+### Run a Exploded Module: Java 9+
 
 `java -p 위치 -m 모듈이름/실행할클래스`
 
@@ -145,7 +171,7 @@ Hello, World!
 
 `out/:myexplodedmodule/:mypackagedmodule.jar`
 
-### Link: Runtime Image
+### Link: Runtime Image: Java 9+
 
 ```bash
 jlink --module-path mods/:$JAVA_HOME/jmods \
