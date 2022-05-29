@@ -22,4 +22,7 @@
   - does not exist class
   - cyclic dependence
   - IllegalAccessException - qualified exports
-- [Service]()
+- ServiceLoader
+  - [Factory → ServiceLoader](../src/easytext-service/README.md)
+  - [Provide Method and Factory](../src/easytext-providers/README.md)
+  - [ServiceLoader + Factory](../src/easytext-service-factory/README.md)
