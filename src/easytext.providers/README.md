@@ -1,6 +1,6 @@
-# EasyText Provider Method
+# EasyText Provider Method and Factory
 
-### Provider Method
+### Provider Method: public
 
 ```java
 module provider.method.example {
@@ -25,6 +25,8 @@ public class ExampleProviderMethod implements Analyzer {
 
 ### Provider Factory
 
+#### Provider Class: public
+
 ```java
 module provider.factory.example {
     requires easytext.analysis.api;
@@ -41,6 +43,8 @@ public class ExampleProviderFactory {
     }
 }
 ```
+
+#### Implementation Class: package-private
 
 ```java
 class ExampleProvider implements Analyzer {
