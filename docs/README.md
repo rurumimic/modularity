@@ -26,3 +26,4 @@
   - [Factory → ServiceLoader](../src/easytext-service/README.md)
   - [Provide Method and Factory](../src/easytext-providers/README.md)
   - [ServiceLoader + Factory](../src/easytext-service-factory/README.md)
+  - [Filtering](../src/easytext-filtering/README.md)
