@@ -184,6 +184,37 @@ module easytext.gui {
 
 ![](gui.png)
 
+### 이미지
+
+```bash
+jlink --module-path mods/:$JAVA_HOME/jmods \
+      --add-modules easytext.cli \
+      --add-modules easytext.gui \
+      --output image
+```
+
+```bash
+image/bin/java --list-modules
+
+easytext.analysis
+easytext.cli
+easytext.gui
+java.base@9.0.4
+java.datatransfer@9.0.4
+java.desktop@9.0.4
+java.prefs@9.0.4
+java.xml@9.0.4
+javafx.base@9.0.4
+javafx.controls@9.0.4
+javafx.graphics@9.0.4
+jdk.jsobject@9.0.4
+```
+
+```bash
+image/bin/java -m easytext.cli lorem.ipsum.txt
+image/bin/java -m easytext.gui
+```
+
 #### 설명
 
 ```bash

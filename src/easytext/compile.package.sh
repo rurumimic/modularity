@@ -29,3 +29,11 @@ javac -d out/easytext.three --module-source-path src -m easytext.gui,easytext.cl
 #     -C out/easytext.three/easytext.analysis .
 jar -cfe mods/easytext.gui.jar foo.easytext.gui.Main \
     -C out/easytext.three/easytext.gui .
+
+# Build a image
+jlink --module-path mods/:$JAVA_HOME/jmods \
+      --add-modules easytext.cli \
+      --add-modules easytext.gui \
+      --output image
+
+image/bin/java --list-modules

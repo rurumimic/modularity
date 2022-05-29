@@ -49,3 +49,15 @@ public class Main {
     }
 }
 ```
+
+## Image
+
+```bash
+image/bin/java --list-modules
+
+easytext.analysis.api
+easytext.analysis.coleman
+easytext.analysis.kincaid
+easytext.filtering
+java.base@9.0.4
+```

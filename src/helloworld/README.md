@@ -200,6 +200,15 @@ helloworld-image
 └── release
 ```
 
+#### List modules
+
+```bash
+helloworld-image/bin/java --list-modules
+ 
+helloworld
+java.base@9.0.4
+```
+
 #### File Size
 
 ```bash
@@ -212,4 +221,12 @@ du -sh helloworld-image
 du -shL $JAVA_HOME
 
 505M ~/.jenv/versions/9
+```
+
+#### IllegalStateException
+
+add modules에서 빠진 경우:
+
+```bash
+java.lang.IllegalStateException: SyllableCounter not found.
 ```

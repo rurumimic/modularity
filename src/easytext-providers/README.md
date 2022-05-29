@@ -53,3 +53,15 @@ class ExampleProvider implements Analyzer {
     }
 }
 ```
+
+## Image
+
+```bash
+image/bin/java --list-modules
+
+easytext.analysis.api
+java.base@9.0.4
+main
+provider.factory.example
+provider.method.example
+```

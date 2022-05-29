@@ -9,3 +9,10 @@ jar -cf mods/easytext.analysis.api.jar -C out/easytext.analysis.api .
 jar -cf mods/provider.factory.jar -C out/provider.factory.example .
 jar -cf mods/provider.method.jar -C out/provider.method.example .
 jar -cfe mods/main.jar foo.providers.main.Main -C out/main .
+
+jlink --module-path mods/:$JAVA_HOME/jmods \
+      --add-modules main \
+      --add-modules provider.method.example \
+      --add-modules provider.factory.example \
+      --launcher main=main \
+      --output image

@@ -41,3 +41,24 @@ public class Main {
     }
 }
 ```
+
+## Image
+
+```bash
+image/bin/java --list-modules
+
+easytext.analysis.api
+easytext.analysis.coleman
+easytext.analysis.kincaid
+easytext.cli
+easytext.gui
+java.base@9.0.4
+java.datatransfer@9.0.4
+java.desktop@9.0.4
+java.prefs@9.0.4
+java.xml@9.0.4
+javafx.base@9.0.4
+javafx.controls@9.0.4
+javafx.graphics@9.0.4
+jdk.jsobject@9.0.4
+```

@@ -10,3 +10,9 @@ jar -cf mods/easytext.analysis.coleman.jar -C out/easytext.analysis.coleman .
 jar -cf mods/easytext.analysis.kincaid.jar -C out/easytext.analysis.kincaid .
 jar -cfe mods/easytext.filtering.jar foo.easytext.filtering.Main -C out/easytext.filtering .
 
+jlink --module-path mods/:$JAVA_HOME/jmods \
+      --add-modules easytext.filtering \
+      --add-modules easytext.analysis.coleman \
+      --add-modules easytext.analysis.kincaid \
+      --launcher filtering=easytext.filtering \
+      --output image

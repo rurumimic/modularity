@@ -10,3 +10,11 @@ jar -cf mods/easytext.analysis.coleman.jar -C out/easytext.analysis.coleman .
 jar -cf mods/easytext.analysis.kincaid.jar -C out/easytext.analysis.kincaid .
 jar -cfe mods/easytext.cli.jar foo.easytext.cli.Main -C out/easytext.cli .
 jar -cfe mods/easytext.gui.jar foo.easytext.gui.Main -C out/easytext.gui .
+
+jlink --module-path mods/:$JAVA_HOME/jmods \
+      --add-modules easytext.cli \
+      --add-modules easytext.gui \
+      --add-modules easytext.analysis.coleman \
+      --add-modules easytext.analysis.kincaid \
+      --launcher cli=easytext.cli \
+      --output image

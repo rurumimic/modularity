@@ -15,3 +15,7 @@ java -p mods -m easytext.cli lorem.ipsum.txt
 java -p out/easytext.three -m easytext.gui/foo.easytext.gui.Main lorem.ipsum.txt
 # run a JAR
 java -p mods -m easytext.gui lorem.ipsum.txt
+
+# Run Image
+image/bin/java -m easytext.cli lorem.ipsum.txt
+image/bin/java -m easytext.gui
