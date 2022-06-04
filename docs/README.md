@@ -18,12 +18,13 @@
   - resolution
   - unnamed module
 - [Create a module](../src/helloworld/README.md)
-- [Multi modules](../src/easytext/README.md)
+- [Multi modules](../src/serviceloader/easytext/README.md)
   - does not exist class
   - cyclic dependence
   - IllegalAccessException - qualified exports
 - ServiceLoader
-  - [Factory → ServiceLoader](../src/easytext-service/README.md)
-  - [Provide Method and Factory](../src/easytext-providers/README.md)
-  - [ServiceLoader + Factory](../src/easytext-service-factory/README.md)
-  - [Filtering](../src/easytext-filtering/README.md)
+  - [Factory → ServiceLoader](../src/serviceloader/easytext-service/README.md)
+  - [Provide Method and Factory](../src/serviceloader/easytext-providers/README.md)
+  - [ServiceLoader + Factory](../src/serviceloader/easytext-service-factory/README.md)
+  - [Filtering](../src/serviceloader/easytext-filtering/README.md)
+- [Patterns](../src/patterns/README.md)
