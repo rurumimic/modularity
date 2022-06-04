@@ -1,0 +1,3 @@
+module schemagenerator {
+    exports schemagenerator;
+}

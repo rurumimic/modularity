@@ -27,4 +27,7 @@
   - [Provide Method and Factory](../src/serviceloader/easytext-providers/README.md)
   - [ServiceLoader + Factory](../src/serviceloader/easytext-service-factory/README.md)
   - [Filtering](../src/serviceloader/easytext-filtering/README.md)
-- [Patterns](../src/patterns/README.md)
+- [Patterns](patterns.md)
+  - Implied Readability
+  - Cycle Dependency
+  - Optional Dependency
